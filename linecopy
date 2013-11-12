@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+## Place one line at a time from a file into the xclipboard
+## Usage: linecopy <file>
+## Requires xclip
+
+while read -d $'\n' i
+do
+  printf '%s\n' "$i" | xclip -l 1 -quiet 2> /dev/null
+done < "$1"

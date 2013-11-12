@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+shopt -s extglob
+
+for f in ./*-+([[:digit:]]).mkd; do
+  g+=("$f")
+done
+
+[[ -d PDF ]] || mkdir PDF
+pandoc --template=mytemplate.latex --chapters --toc -V documentclass=report -o PDF/"${g%-*}-$(date +%F).pdf" "${g[@]}"
+
+exit 0

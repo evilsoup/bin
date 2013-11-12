@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+##  Convert a very limited amount of markdown to bbcode
+##  will be added to if and when I need more bbcode tags
+
+[[ -f "$1" ]] || printf %s\\n 'Requires a single input file.'
+
+sed -e 's|\*\([^*]*\)\*|[i]\1[/i]|g' -e 's/^----/[hr]/' -e 's|#\(.*\)$|[center][b]\1[/b][/center]|' "$1"
+
+exit 0

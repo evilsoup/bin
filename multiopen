@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+
+for f do
+  xdg-open "$f" &> /dev/null
+done
+exit 0

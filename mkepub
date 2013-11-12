@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+shopt -s extglob
+
+for f in ./*-+([[:digit:]]).mkd; do
+  g+=("$f")
+done
+
+[[ -d EPUB ]] || mkdir EPUB
+pandoc -o EPUB/"${g%-*}-$(date +%F).epub" "${g[@]}"
+
+exit 0

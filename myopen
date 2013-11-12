@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+##  Primarily for use with vifm
+
+for f do
+  if file -b "$f" | grep -F text > /dev/null
+    then
+      g+=("$f")
+    else
+      xdg-open "$f" &> /dev/null
+  fi
+done
+[[ "${g[0]}" != '' ]] && vim "${g[@]}"
+
+exit 0
